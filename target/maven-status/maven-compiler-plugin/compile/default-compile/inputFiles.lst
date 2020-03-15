@@ -1,0 +1,6 @@
+/root/k8-poc/spring-boot-mongo-docker/src/main/java/com/mt/springmongo/UserController.java
+/root/k8-poc/spring-boot-mongo-docker/src/main/java/com/mt/springmongo/UserRepository.java
+/root/k8-poc/spring-boot-mongo-docker/src/main/java/com/mt/springmongo/WebConfig.java
+/root/k8-poc/spring-boot-mongo-docker/src/main/java/com/mt/springmongo/UserResource.java
+/root/k8-poc/spring-boot-mongo-docker/src/main/java/com/mt/springmongo/DemoApp.java
+/root/k8-poc/spring-boot-mongo-docker/src/main/java/com/mt/springmongo/User.java
