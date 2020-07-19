@@ -31,7 +31,7 @@ pipeline {
 	choice(choices: 'Yes\nNo', description: 'SonarQube Analysis Required?', name: 'Sonar_Code_Quality_Scan' )
 	}
 
-				stages{
+	stages{
 
 				stage('Checkout SCM'){
 					steps{
@@ -45,47 +45,49 @@ pipeline {
 
 					sh 'mvn clean install -Dmaven.test.skip=true'
 
-					}
+							}
 
-
-					}
+						}
 					}
 
 
 				stage ('Sonar Code quality scan'){
 
-				steps {
+					steps {
 
-				 if (params.Sonar_Code_Quality_Scan=='Yes'){
-					steps{
-					withSonarQubeEnv(installationName: 'prod_sonarqube'){
-					withMaven(mavenSettingsConfig: 'Maven-settings-pb1'){
+					if (params.Sonar_Code_Quality_Scan=='Yes'){
+						steps{
+						withSonarQubeEnv(installationName: 'prod_sonarqube'){
+						withMaven(mavenSettingsConfig: 'Maven-settings-pb1'){
 
-					sh 'mvn -B sonar:sonar '
-					//sh 'mvn -B sonar:sonar -Dsonar.branch.name=$BRANCH_NAME'
+						sh 'mvn -B sonar:sonar '
+						//sh 'mvn -B sonar:sonar -Dsonar.branch.name=$BRANCH_NAME'
 
+									}
+								}
+						}
+
+						else {
+
+					sh 'echo "Sonar Quality scan is not required....."'
+						}
 					}
 					}
 					}
 
 					stage ('Sonar Quality Gate '){
-					steps {
-					sleep(10)
-					 timeout(time: 3, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
-                        def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
-                        if (qg.status != 'OK') {
-                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                        }
-                      }
-					}
+						steps {
+						sleep(10)
+						 timeout(time: 3, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
+							def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
+							if (qg.status != 'OK') {
+								error "Pipeline aborted due to quality gate failure: ${qg.status}"
+							}
+						  }
+						}
 
 					}
-					}
-	 				else {
 
-					sh 'echo "Sonar Quality scan is not required....."'
-					}
-					}
 
 				stage ('Upload application artifacts to Nexus'){
 					steps {
@@ -120,5 +122,5 @@ pipeline {
 					}
 
 
-	}
+		}
 	}
