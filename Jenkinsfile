@@ -28,7 +28,7 @@ pipeline {
 	parameters{
 
 	choice(choices: 'Snapshot\nRelease', description: 'Do you need snapshot or release?', name: 'Requested_Action' )
-	choice(choices: 'Yes\nNo', description: 'SonarQube Analysis Required?', name: 'Sonar_Code_Quality_Scan' )
+
 	}
 
 	stages{
@@ -54,10 +54,7 @@ pipeline {
 			stage ('Sonar Code quality scan'){
 				steps {
 
-					script{
 
-
-					if (params.Sonar_Code_Quality_Scan=='Yes'){
 						steps{
 						withSonarQubeEnv(installationName: 'prod_sonarqube'){
 						withMaven(mavenSettingsConfig: 'Maven-settings-pb1'){
@@ -70,14 +67,11 @@ pipeline {
 							}
 						}
 
-						else {
 
-					sh 'echo "Sonar Quality scan is not required....." '
-						}
 					}
-					}
-					}
-                /*
+
+
+
 					stage ('Sonar Quality Gate '){
 						steps {
 						sleep(10)
@@ -91,7 +85,7 @@ pipeline {
 
 					}
 
-					*/
+
 
 
 				stage ('Upload application artifacts to Nexus'){
