@@ -43,7 +43,7 @@ pipeline {
 					steps{
 					withMaven(mavenSettingsConfig: 'Maven-settings-pb1'){
 
-					sh 'mvn clean install -Dmaven.test.skip=true'
+					sh 'sudo mvn clean install -Dmaven.test.skip=true'
 
 							}
 
