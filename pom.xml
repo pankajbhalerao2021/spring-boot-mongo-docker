@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.mt</groupId>
 	<artifactId>spring-boot-mongo</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -86,7 +86,7 @@
 		<connection>scm:git:https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/pankajbhalerao2021/spring-boot-mongo-docker.git</connection>
 		<url>scm:git:https://github.com/pankajbhalerao2021/spring-boot-mongo-docker.git</url>
 		<developerConnection>scm:git:https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/pankajbhalerao2021/spring-boot-mongo-docker.git</developerConnection>
-		<tag>spring-boot-mongo-1.0.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 
