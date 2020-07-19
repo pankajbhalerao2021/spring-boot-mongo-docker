@@ -55,7 +55,8 @@ pipeline {
 
 					steps {
 
-					 script {
+					script{
+
 
 					if (params.Sonar_Code_Quality_Scan=='Yes'){
 						steps{
@@ -77,7 +78,6 @@ pipeline {
 					}
 					}
 					}
-
 
 					stage ('Sonar Quality Gate '){
 						steps {
@@ -114,17 +114,17 @@ pipeline {
 
 					sh 'mvn deploy -Dmaven.test.skip=true -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true'
 
-					}
-					 }
+							}
+						 }
 
 
-					}
-					}
-					}
-					}
-					}
+						}
+						}
+						}
+						}
+						}
 					}
 
 
 		}
-
+	}
