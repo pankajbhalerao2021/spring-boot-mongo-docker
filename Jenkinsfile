@@ -64,7 +64,8 @@ pipeline {
 						//sh 'mvn -B sonar:sonar -Dsonar.branch.name=$BRANCH_NAME'
 
 									}
-								}
+									}
+							}
 						}
 
 						else {
@@ -73,7 +74,7 @@ pipeline {
 						}
 					}
 					}
-					}
+
 
 					stage ('Sonar Quality Gate '){
 						steps {
