@@ -55,6 +55,8 @@ pipeline {
 
 					steps {
 
+					 script {
+
 					if (params.Sonar_Code_Quality_Scan=='Yes'){
 						steps{
 						withSonarQubeEnv(installationName: 'prod_sonarqube'){
@@ -72,6 +74,7 @@ pipeline {
 
 					sh 'echo "Sonar Quality scan is not required....."'
 						}
+					}
 					}
 					}
 
