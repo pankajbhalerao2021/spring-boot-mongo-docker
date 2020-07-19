@@ -64,7 +64,9 @@
 					<checkModificationExcludes>
 						<checkModificationExclude>pom.xml</checkModificationExclude>
 						<checkModificationExclude>**</checkModificationExclude>
-					</checkModificationExcludes>
+							<localCheckout>true</localCheckout>
+							<pushChanges>false</pushChanges>
+						</checkModificationExcludes>
 				</configuration>
 				<dependencies>
 					<dependency>
@@ -88,8 +90,6 @@
 		<developerConnection>scm:git:https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/pankajbhalerao2021/spring-boot-mongo-docker.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-
-
 
 	<distributionManagement>
 		<repository>
