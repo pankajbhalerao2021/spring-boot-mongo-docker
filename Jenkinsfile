@@ -53,8 +53,9 @@ pipeline {
 					}
 
 
-
 				stage ('Sonar Code quality scan'){
+
+				steps {
 
 				 if (params.Sonar_Code_Quality_Scan=='Yes'){
 					steps{
@@ -82,6 +83,7 @@ pipeline {
 	 				else {
 
 					sh 'echo "Sonar Quality scan is not required....."'
+					}
 					}
 
 				stage ('Upload application artifacts to Nexus'){
