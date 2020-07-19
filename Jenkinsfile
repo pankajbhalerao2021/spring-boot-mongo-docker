@@ -61,13 +61,10 @@ pipeline {
 					withSonarQubeEnv(installationName: 'prod_sonarqube'){
 					withMaven(mavenSettingsConfig: 'Maven-settings-pb1'){
 
-
 					sh 'mvn -B sonar:sonar '
 					//sh 'mvn -B sonar:sonar -Dsonar.branch.name=$BRANCH_NAME'
 
 					}
-					}
-
 					}
 					}
 
@@ -79,10 +76,9 @@ pipeline {
                             error "Pipeline aborted due to quality gate failure: ${qg.status}"
                         }
                       }
-
-					}
 					}
 
+					}
 	 				else {
 
 					sh 'echo "Sonar Quality scan is not required....."'
