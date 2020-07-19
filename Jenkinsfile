@@ -70,6 +70,7 @@ pipeline {
 
 					}
 
+					/*
 
 
 					stage ('Sonar Quality Gate '){
@@ -88,6 +89,7 @@ pipeline {
 						}
 
 					}
+					*/
 
 
 
