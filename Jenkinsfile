@@ -28,6 +28,7 @@ pipeline {
 	parameters{
 
 	choice(choices: 'Snapshot\nRelease', description: 'Do you need snapshot or release?', name: 'Requested_Action' )
+	choice(choices: 'Yes\nNo', description: 'SonarQube Analysis Required?', name: 'Sonar_Code_Quality_Scan' )
 	}
 
 
@@ -51,7 +52,7 @@ pipeline {
 					}
 					}
 
-
+                 if (params.Sonar_Code_Quality_Scan=='Yes'){
 
 				stage ('Sonar Code quality scan'){
 					steps{
@@ -66,6 +67,23 @@ pipeline {
 					}
 
 					}
+					}
+
+					stage ('Sonar Quality Gate '){
+					sleep(10)
+					 timeout(time: 3, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
+                        def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
+                        if (qg.status != 'OK') {
+                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                        }
+                      }
+
+					}
+					}
+
+					else{
+
+					sh 'echo "Sonar Quality scan is not required....."'
 					}
 
 				stage ('Upload application artifacts to Nexus'){
