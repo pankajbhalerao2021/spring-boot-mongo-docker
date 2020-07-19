@@ -67,10 +67,6 @@ pipeline {
 
 
 
-
-					/*
-
-
 					stage ('Sonar Quality Gate '){
 						steps {
 						sleep(10)
@@ -87,7 +83,7 @@ pipeline {
 						}
 
 					}
-					*/
+
 
 
 
