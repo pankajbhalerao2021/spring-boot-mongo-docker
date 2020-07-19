@@ -54,8 +54,6 @@ pipeline {
 			stage ('Sonar Code quality scan'){
 				steps {
 
-
-						steps{
 						withSonarQubeEnv(installationName: 'prod_sonarqube'){
 						withMaven(mavenSettingsConfig: 'Maven-settings-pb1'){
 
@@ -68,7 +66,7 @@ pipeline {
 						}
 
 
-					}
+
 
 					/*
 
