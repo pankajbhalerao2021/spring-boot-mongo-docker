@@ -83,7 +83,7 @@ pipeline {
 					}
 					}
 
-					else{
+	 				else {
 
 					sh 'echo "Sonar Quality scan is not required....."'
 					}
@@ -105,7 +105,7 @@ pipeline {
                         """
 					 }
 
-					 else{
+					 else {
 
 					sh 'mvn deploy -Dmaven.test.skip=true -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true'
 
