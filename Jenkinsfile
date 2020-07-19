@@ -51,9 +51,8 @@ pipeline {
 					}
 
 
-				stage ('Sonar Code quality scan'){
-
-					steps {
+			stage ('Sonar Code quality scan'){
+				steps {
 
 					script{
 
@@ -73,12 +72,12 @@ pipeline {
 
 						else {
 
-					sh 'echo "Sonar Quality scan is not required....."'
+					sh 'echo "Sonar Quality scan is not required....." '
 						}
 					}
 					}
 					}
-
+                /*
 					stage ('Sonar Quality Gate '){
 						steps {
 						sleep(10)
@@ -91,6 +90,8 @@ pipeline {
 						}
 
 					}
+
+					*/
 
 
 				stage ('Upload application artifacts to Nexus'){
